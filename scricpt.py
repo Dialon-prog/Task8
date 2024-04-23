@@ -6,4 +6,9 @@ class Contact:
         self.middle_name = middle_name
         self.phone_number = phone_number
 
+#Функция для  добавления нового контакта
+def add_contact(contacts, last_name, first_name, middle_name, phone_number):
+    contact = Contact(last_name, first_name, middle_name, phone_number)
+    contacts.append(contact)
+    print("Контакт успешно добавлен.")
         

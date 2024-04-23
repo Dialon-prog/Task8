@@ -21,4 +21,10 @@ def display_contacts(contacts):
         for i, contact in enumerate(contacts, 1):
             print(f"{i}. {contact.last_name} {contact.first_name} {contact.middle_name} {contact.phone_number}")
 
-   
+#Функция для  сохранения контактов в файл
+def save_contacts_to_file(contacts, filename):
+    with open(filename, 'w') as file:
+        for contact in contacts:
+            file.write(f"{contact.last_name},{contact.first_name},{contact.middle_name},{contact.phone_number}\n")
+    print("Контакты успешно сохранены в файл.")
+

@@ -11,4 +11,14 @@ def add_contact(contacts, last_name, first_name, middle_name, phone_number):
     contact = Contact(last_name, first_name, middle_name, phone_number)
     contacts.append(contact)
     print("Контакт успешно добавлен.")
-        
+
+#Функция вывода  списка контактов
+def display_contacts(contacts):
+    if not contacts:
+        print("Телефонный справочник пуст.")
+    else:
+        print("Телефонный справочник:")
+        for i, contact in enumerate(contacts, 1):
+            print(f"{i}. {contact.last_name} {contact.first_name} {contact.middle_name} {contact.phone_number}")
+
+   

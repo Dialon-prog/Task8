@@ -43,4 +43,13 @@ def load_contacts_from_file(filename):
     except FileNotFoundError:
         print("Файл не найден.")
         return contacts
-    
+#Функция для поиска контакта по заданному ключу (фамилии, имени, отчеству или номеру телефона)
+def search_contact(contacts, key):
+    results = [contact for contact in contacts if key.lower() in (contact.first_name.lower(), contact.last_name.lower(), contact.middle_name.lower(), contact.phone_number.lower())]
+    if results:
+        print("Найденные контакты:")
+        for i, contact in enumerate(results, 1):
+            print(f"{i}. {contact.last_name} {contact.first_name} {contact.middle_name} {contact.phone_number}")
+    else:
+        print("Контакт не найден.")
+

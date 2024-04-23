@@ -28,3 +28,19 @@ def save_contacts_to_file(contacts, filename):
             file.write(f"{contact.last_name},{contact.first_name},{contact.middle_name},{contact.phone_number}\n")
     print("Контакты успешно сохранены в файл.")
 
+
+#Функция загрузки списка контактов из файла
+def load_contacts_from_file(filename):
+    contacts = []
+    try:
+        with open(filename, 'r') as file:
+            for line in file:
+                data = line.strip().split(',')
+                contact = Contact(data[0], data[1], data[2], data[3])
+                contacts.append(contact)
+        print("Контакты успешно загружены из файла.")
+        return contacts
+    except FileNotFoundError:
+        print("Файл не найден.")
+        return contacts
+    

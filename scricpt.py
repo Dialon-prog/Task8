@@ -53,3 +53,40 @@ def search_contact(contacts, key):
     else:
         print("Контакт не найден.")
 
+def main():
+    contacts = []
+    filename = "phonebook.txt"
+
+    while True:
+
+        print("\nМеню:")
+        print("1. Вывести контакты")
+        print("2. Добавить контакт")
+        print("3. Сохранить контакты в файл")
+        print("4. Загрузить контакты из файла")
+        print("5. Поиск контакта")
+        print("6. Выход")
+
+        choice = input("Выберите действие: ")
+
+        if choice == "1":
+            display_contacts(contacts)
+        elif choice == "2":
+            last_name = input("Введите фамилию: ")
+            first_name = input("Введите имя: ")
+            middle_name = input("Введите отчество: ")
+            phone_number = input("Введите номер телефона: ")
+            add_contact(contacts, last_name, first_name, middle_name, phone_number)
+        elif choice == "3":
+            save_contacts_to_file(contacts, filename)
+        elif choice == "4":
+            contacts = load_contacts_from_file(filename)
+        elif choice == "5":
+            key = input("Ввудите фамилию, имя, отчество или номер телефона для  поиска: ")
+            search_contact(contacts, key)
+        elif choice == "6":
+            break
+        else:
+            print("Неверный выбор. Поробуйте снова.")
+if __name__ == "__main__":
+    main()

@@ -53,6 +53,22 @@ def search_contact(contacts, key):
     else:
         print("Контакт не найден.")
 
+#Функция для копирования контакта из одного файла в другой по номеру строки
+def copy_contact_from_file(source_filename, destination_filename, line_number):
+    try:
+        with open(source_filename, 'r', encoding='utf-8') as source_file:
+            lines = source_file.readlines()
+            if line_number <= 0 or line_number > len(lines):
+                print("Некорректный номер строки.")
+                return
+            contact_data = lines[line_number - 1].strip().split(',')
+
+            with open(destination_filename, 'a', encoding='utf-8') as destination_file:
+                destination_file.write(','.join(contact_data) + '\n')
+            print("Контакт успешно скопирован.")
+    except FileNotFoundError:
+        print("Файл не найден.")
+
 def main():
     contacts = []
     filename = "phonebook.txt"

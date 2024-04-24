@@ -81,7 +81,8 @@ def main():
         print("3. Сохранить контакты в файл")
         print("4. Загрузить контакты из файла")
         print("5. Поиск контакта")
-        print("6. Выход")
+        print("6. Копирования")
+        print("7. Выход")
 
         choice = input("Выберите действие: ")
 
@@ -101,6 +102,11 @@ def main():
             key = input("Ввудите фамилию, имя, отчество или номер телефона для  поиска: ")
             search_contact(contacts, key)
         elif choice == "6":
+            source_file = input("Введите имя файла, откуда копировать контакт: ")
+            destination_file = input("Введите имя файла, куда копировать контакт: ")
+            line_number = int(input("Введите номер строки для копирования: "))
+            copy_contact_from_file(source_file, destination_file, line_number)
+        elif choice == "7":
             break
         else:
             print("Неверный выбор. Поробуйте снова.")

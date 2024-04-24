@@ -6,6 +6,22 @@ class Contact:
         self.middle_name = middle_name
         self.phone_number = phone_number
 
+    # Метод для преоброзования контакта в строку при выводе
+    def __str__(self):
+        return f"{self.last_name}, {self.first_name}, {self.middle_name}, {self.phone_number}"
+
+#Функция для удаления котактов из списка
+def remove_contact(contacts, last_name, firs_name, middle_name):
+    removed = False
+    for contact in contacts:
+        if contact.last_name == last_name and contact.first_name == firs_name and contact.middle_name == middle_name:
+            contacts.remove(contact)
+            removed = True
+            print("Контакт успешно удален.")
+            break
+    if not removed:
+        print("Контакт не найден.")
+
 #Функция для  добавления нового контакта
 def add_contact(contacts, last_name, first_name, middle_name, phone_number):
     contact = Contact(last_name, first_name, middle_name, phone_number)
@@ -82,7 +98,8 @@ def main():
         print("4. Загрузить контакты из файла")
         print("5. Поиск контакта")
         print("6. Копирования")
-        print("7. Выход")
+        print("7. Удалить контакт")
+        print("8. Выход")
 
         choice = input("Выберите действие: ")
 
@@ -104,11 +121,18 @@ def main():
         elif choice == "6":
             source_file = input("Введите имя файла, откуда копировать контакт: ")
             destination_file = input("Введите имя файла, куда копировать контакт: ")
-            line_number = int(input("Введите номер строки для копирования: "))
+            line_number = int(input("Введите номер строки для копирования: "))          
             copy_contact_from_file(source_file, destination_file, line_number)
         elif choice == "7":
+            last_name = input("")
+            first_name = input("")
+            middle_name = input("")
+            remove_contact(contacts, last_name, first_name, middle_name)
+        elif choice == "8":
             break
         else:
             print("Неверный выбор. Поробуйте снова.")
+
+            
 if __name__ == "__main__":
     main()

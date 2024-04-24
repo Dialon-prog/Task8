@@ -23,7 +23,7 @@ def display_contacts(contacts):
 
 #Функция для  сохранения контактов в файл
 def save_contacts_to_file(contacts, filename):
-    with open(filename, 'w') as file:
+    with open(filename, 'w', encoding='utf-8') as file:
         for contact in contacts:
             file.write(f"{contact.last_name},{contact.first_name},{contact.middle_name},{contact.phone_number}\n")
     print("Контакты успешно сохранены в файл.")
@@ -33,7 +33,7 @@ def save_contacts_to_file(contacts, filename):
 def load_contacts_from_file(filename):
     contacts = []
     try:
-        with open(filename, 'r') as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             for line in file:
                 data = line.strip().split(',')
                 contact = Contact(data[0], data[1], data[2], data[3])
